@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+  <!-- core extension information -->
+    <plugin>
+        <name value= "UBC Library Module"/>
+        <handle value= "library-module"/>
+        <description value= "For the Library tab course reserves listing"/>
+        <version value= "1.0.0"/>
+        <requires>
+            <bbversion value="9.1"/>
+        </requires>
+        <vendor>
+            <id value="ubc"/>
+            <name value="University of British Columbia"/>
+            <url value="http://www.ubc.ca" />
+            <description value="" />
+        </vendor>
+        
+<!--    These two JSPs are displayed when the "remove" and "properties" buttons --> 
+<!--	are pressed on the Building Blocks administration page. 				-->
+<!--    <http-actions>
+            <config value="admin/configure.jsp"/>
+            <remove value="admin/remove.jsp"/>
+        </http-actions>
+ -->    
+        <application-defs>
+            <application handle="library-module" type="shared" use-ssl="false" 
+            	name="UBC Library Config" can-allow-guest="false">
+                <description lang="en_US">For the Library tab course reserves listing</description>
+                <links>
+                    <link>
+                        <type value="system_tool"/>
+                        <name value="UBC Library Config"/>
+                        <url value="/setting" />
+                        <description value="Configure Library tab course reserves listing" />
+                    </link>
+                </links>
+            </application>
+        </application-defs>
+
+<!-- Portal Module Definitions -->
+        <module-defs>
+			<module-type ext-ref="ubc-library-module" title="UBC Library Module"
+				uicreatable="true">
+				<jsp-dir>ubclibrary-static</jsp-dir>
+				<jsp>
+					<view>view.jsp</view>
+					<!--<edit>edit</edit> <admin>admin</admin> -->
+				</jsp>
+			</module-type>
+			<module type="ubc-library-module" isadmin="true" useraddable="true"
+				isdeletable="true" title="Library">
+				<description>UBC Library</description>
+				<module-groups>
+					<module-group id="Everyone" />
+				</module-groups>
+				<ExtraInfo>
+					<property key="body.text" type="String">
+						Shows files belonging to you that needs to be copyright tagged.
+					</property>
+				</ExtraInfo>
+			</module>
+		</module-defs>
+<!--  Custom Content Types -->
+        <content-handlers>
+        </content-handlers>
+
+	<schema-dirs>
+		<schema-dir dir-name="ubclibrary" />
+	</schema-dirs>
+        
+<!-- code permissions required for proper operation -->
+        <permissions>
+            <permission type="attribute" name="user.authinfo" actions="get"/>
+            <permission type="attribute" name="user.personalinfo" actions="get,set"/>
+            <permission type="java.net.SocketPermission" name="137.82.12.98" actions="connect,resolve" />
+<!--             <permission type="java.net.SocketPermission" name="dev-cr.library.ubc.ca" actions="connect,resolve" /> -->
+        </permissions>
+
+    </plugin>
+
+</manifest>

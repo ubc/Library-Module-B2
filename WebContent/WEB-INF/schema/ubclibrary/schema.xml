@@ -1,0 +1,13 @@
+<schema name="ubc_libraryconfig">
+	<comment>Configuration for the UBC Library tab</comment>
+	<table name="ubc_libraryconfig">
+		<column name="PK1" data-type="varchar(100)" nullable="false"
+			identity="true" comment="name of the option" />
+		<column name="optvalue" data-type="varchar(100)" nullable="false"
+			identity="false" comment="value of the option" />
+
+		<primary-key name="ubc_libraryconfig_pk1" comment="Unique primary key">
+			<columnref name="pk1" />
+		</primary-key>
+	</table>
+</schema>
