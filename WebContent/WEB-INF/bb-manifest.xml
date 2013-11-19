@@ -72,9 +72,7 @@
 <!-- code permissions required for proper operation -->
         <permissions>
             <permission type="attribute" name="user.authinfo" actions="get"/>
-            <permission type="attribute" name="user.personalinfo" actions="get,set"/>
-            <permission type="java.net.SocketPermission" name="137.82.12.98" actions="connect,resolve" />
-<!--             <permission type="java.net.SocketPermission" name="dev-cr.library.ubc.ca" actions="connect,resolve" /> -->
+            <permission type="attribute" name="user.personalinfo" actions="get"/>
         </permissions>
 
     </plugin>

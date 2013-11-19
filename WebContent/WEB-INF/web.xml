@@ -8,9 +8,19 @@
 		<servlet-name>UBCLibraryServlet</servlet-name>
 		<servlet-class>ca.ubc.ctlt.ubclibrary.UBCLibraryServlet</servlet-class>
 	</servlet>
+
+	<servlet>
+		<servlet-name>UBCLibrarySigServlet</servlet-name>
+		<servlet-class>ca.ubc.ctlt.ubclibrary.UBCLibrarySigServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>UBCLibraryServlet</servlet-name>
 		<url-pattern>/setting</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>UBCLibrarySigServlet</servlet-name>
+		<url-pattern>/signature</url-pattern>
 	</servlet-mapping>
 </web-app>
