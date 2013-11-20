@@ -20,28 +20,30 @@ public class UBCLibraryServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		if (!optsExist) {
-			if (getParam("url").length() <= 0) {
-				setParam("url", "https://dev-cr.library.ubc.ca/librarytab");
-			}
-			if (getParam("secret_key").length() <= 0) {
-				setParam("secret_key", "librarytabsecret");
-			}
-			optsExist = true;
-		}
-		
-		if (request.getParameter("url") != null) {
-			setParam("url", request.getParameter("url").toString());
-		}
-		if (request.getParameter("secret_key") != null) {
-			setParam("secret_key", request.getParameter("secret_key").toString());
-		}
 		
 		RequestDispatcher dispatcher = null;
 		Context ctx = ContextManagerFactory.getInstance().getContext();
         User user = ctx.getUser();
         
         if (user != null && user.getSystemRole().equals(User.SystemRole.SYSTEM_ADMIN)) {
+        	
+        	if (!optsExist) {
+    			if (getParam("url").length() <= 0) {
+    				setParam("url", "https://dev-cr.library.ubc.ca/librarytab");
+    			}
+    			if (getParam("secret_key").length() <= 0) {
+    				setParam("secret_key", "librarytabsecret");
+    			}
+    			optsExist = true;
+    		}
+    		
+    		if (request.getParameter("url") != null) {
+    			setParam("url", request.getParameter("url").toString());
+    		}
+    		if (request.getParameter("secret_key") != null) {
+    			setParam("secret_key", request.getParameter("secret_key").toString());
+    		}
+    		
     		request.setAttribute("url", getParam("url"));
     		request.setAttribute("secret_key", getParam("secret_key"));
     		dispatcher = request.getRequestDispatcher("/WEB-INF/view/index.jsp");
