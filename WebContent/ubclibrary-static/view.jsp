@@ -15,9 +15,9 @@
 	String version = "1.0";
 	String timestamp = String.valueOf(new Date().getTime()); 
 	String nonce = String.valueOf(Math.random() * 100000000);
-	String puid = ctx.getUser().getBatchUid();
+	String user_id = ctx.getUser().getBatchUid();
 	
-	String signature = sigService.generateSig(consumerKey, signatureMethod, version, puid, timestamp, nonce);
+	String signature = sigService.generateSig(consumerKey, signatureMethod, version, user_id, timestamp, nonce);
 %>		
 <iframe id="theframe" style="width: 100%; height: 100%;">
 </iframe>
@@ -29,7 +29,7 @@
 	<input type="hidden" value="<%= nonce %>" name="oauth_nonce" id="oauth_nonce">
 	<input type="hidden" value="<%= version %>" name="oauth_version" id="oauth_version">
 	<input type="hidden" value="<%= signature %>" name="oauth_signature" id="oauth_signature">
-	<input type="hidden" value="<%= puid %>" name="puid" id="puid">
+	<input type="hidden" value="<%= user_id %>" name="user_id" id="user_id">
 </form>
 
 <script>

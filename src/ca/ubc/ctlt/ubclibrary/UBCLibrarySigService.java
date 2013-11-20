@@ -9,7 +9,7 @@ import javax.xml.bind.DatatypeConverter;
 public class UBCLibrarySigService {
 
 	public String generateSig(String consumerKey, String signatureMethod, String version,
-			String puid, String timestamp, String nonce) {
+			String user_id, String timestamp, String nonce) {
 		Mac mac;
 		byte[] digest = null;
 		
@@ -23,7 +23,7 @@ public class UBCLibrarySigService {
 			+ "&oauth_signature_method=" + signatureMethod
 			+ "&oauth_timestamp=" + timestamp
 			+ "&oauth_version=" + version
-			+ "&puid=" + puid;
+			+ "&user_id=" + user_id;
 		
 		try {
 			baseString = URLEncoder.encode(baseString, "UTF-8");
