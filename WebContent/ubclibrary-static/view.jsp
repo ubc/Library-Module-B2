@@ -16,12 +16,8 @@
 	String timestamp = String.valueOf(new Date().getTime()); 
 	String nonce = String.valueOf(Math.random() * 100000000);
 	String user_id = ctx.getUser().getBatchUid();
-	
-	String signature = sigService.generateSig(consumerKey, signatureMethod, version, user_id, timestamp, nonce);
+  String signature = sigService.generateSig(consumerKey, signatureMethod, version, user_id, timestamp, nonce);
 %>		
-<iframe id="theframe" style="width: 100%; height: 100%;">
-</iframe>
-
 <form method="POST" action="<%= new UBCLibraryServlet().getParam("url") %>" id="theform">
 	<input type="hidden" value="<%= consumerKey %>" name="oauth_consumer_key" id="oauth_consumer_key">
 	<input type="hidden" value="<%= signatureMethod %>" name="oauth_signature_method" id="oauth_signature_method">
@@ -33,11 +29,7 @@
 </form>
 
 <script>
-	var theframe = document.getElementById("theframe");
-	var frameContent = (theframe.contentDocument) ? theframe.contentDocument: theframe.contentWindow.document;
 	var theform = document.getElementById("theform");
-	
-	frameContent.body.appendChild(theform);
-	frameContent.getElementById("theform").submit();
+	theform.submit();
 </script>
 </bbNG:genericPage>
