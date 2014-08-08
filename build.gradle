@@ -42,25 +42,11 @@ sourceSets {
     }
 }
 
-// Compile the Sass css file into regular css 
-task compileCSS(type:Exec) {
-    println 'Compiling css'	
-        commandLine = ['sass', '--update', 'webapp/styles:webapp/styles']
-}
-
-// Make sure that front end packages are installed by Bower
-task bowerInstall(type:Exec) {
-    println 'Bower install'
-        commandLine = ['bower', 'install']
-}
-
 // Include the webapp directory into the building block war file. This is to
 // avoid the default src/main/webapp/ directory structure. 
 war {
     from "WebContent"
 }
-war.dependsOn bowerInstall // ensure front-end libs included in the war file
-//war.dependsOn compileCSS // ensure actual CSS generated for the war file
 
 // Automatically install the building block on the dev server
 task deploy( dependsOn: "war" ) << {
