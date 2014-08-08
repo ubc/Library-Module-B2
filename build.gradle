@@ -32,13 +32,6 @@ dependencies {
 
         // Java servlet api, we're stuck with 2.5 cause BBL uses tomcat 6
         providedCompile 'javax.servlet:servlet-api:2.5' 
-
-        // Logback, logging framework, with native slf4j api
-        compile 'ch.qos.logback:logback-classic:1.0.13'
-        // Jersey, rest framework, jax-rs reference implementation
-        compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.4'
-        // Gson, convert Java objects into JSON strings and vice versa
-        compile 'com.google.code.gson:gson:2.2.4'
 }
 
 sourceSets {
